@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { addBooks } from '../redux/actions/actionAddBooks';
+import { addBooks, deleteBooks } from '../redux/actions/actionAddBooks';
+import FlipMove from 'react-flip-move';
 
-const AddBooks = ({ libraryData, addBook }) => {
+const AddBooks = ({ libraryData, addBook, deleteBook }) => {
 
     /* console.log(libraryData) */
 
@@ -21,14 +22,19 @@ const AddBooks = ({ libraryData, addBook }) => {
     }
 
     const displayData = libraryData.length > 0 ?
+    <FlipMove>
+    {
         libraryData.map((data) => {
             return (
                 <li key={data.id} className='list-group-item list-group-item-light d-flex justify-content-between'>
                     <span><strong>Titre: </strong>{data.title}</span>
                     <span><strong>Auteur: </strong>{data.author}</span>
+                    <span onClick={() => deleteBook(data.id)} className='btn btn-danger'>x</span>
                 </li>
             )
         })
+    }
+    </FlipMove>
         : <p className='text-center'>Aucune data à afficher</p>
 
     const deleteAllBooksBtn = libraryData.length > 0 &&
@@ -94,7 +100,8 @@ const mapStateToProps = (state) => { //le state de redux
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        addBook: (param) => dispatch(addBooks(param))
+        addBook: (param) => dispatch(addBooks(param)),
+        deleteBook: (id) => dispatch(deleteBooks(id))
     }
 }
 

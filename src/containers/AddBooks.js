@@ -31,6 +31,12 @@ const AddBooks = ({ libraryData, addBook }) => {
         })
         : <p className='text-center'>Aucune data à afficher</p>
 
+    const deleteAllBooksBtn = libraryData.length > 0 &&
+        <div className='d-flex justify-content-center'>
+            <button className='btn btn-danger my-4'>Effacer tous les livres</button>
+        </div>
+    
+        
     return (
         <main role="main">
             <div className='jumbotron jumbotron-fluid'>
@@ -72,9 +78,7 @@ const AddBooks = ({ libraryData, addBook }) => {
                         <ul className='list-group'>
                             {displayData}
                         </ul>
-                        <div className='d-flex justify-content-center'>
-                            <button className='btn btn-danger my-4'>Effacer tous les livres</button>
-                        </div>
+                        {deleteAllBooksBtn}
                     </div>
                 </div>
             </div>

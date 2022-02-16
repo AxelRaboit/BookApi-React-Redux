@@ -16,7 +16,9 @@ const AddBooks = ({ libraryData, addBook, deleteBook, deleteAll }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        addBook(newData)
+        if(newData.title !== '' && newData.author !== ''){
+            addBook(newData)
+        }
 
         setNewData(initialState)
     }

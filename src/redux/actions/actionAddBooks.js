@@ -1,4 +1,4 @@
-import { ADD_BOOKS, DELETE_BOOKS, DELETE_ALL_BOOKS } from "../constants";
+import { ADD_BOOKS, DELETE_BOOK, DELETE_ALL_BOOKS } from "../constants";
 
 export const addBooks = (data) => {
     return {
@@ -9,7 +9,7 @@ export const addBooks = (data) => {
 
 export const deleteBooks = (id) => {
     return {
-        type: DELETE_BOOKS,
+        type: DELETE_BOOK,
         payload: id
     }
 }

@@ -1,19 +1,19 @@
-import { ADD_BOOKS, DELETE_BOOKS, DELETE_ALL_BOOKS } from "../constants";
-import { v4 as uuidv4 } from 'uuid';
+import { ADD_BOOKS, DELETE_BOOK, DELETE_ALL_BOOKS } from "../constants";
+import { v4 as uuid } from 'uuid';
 
 const initialState = {
     books: []
 }
 
-const helperAddData = (action) => {
+const addData = (action) => {
     return {
-        id: uuidv4(),
+        id: uuid(),
         title: action.payload.title,
         author: action.payload.author
     }
 }
 
-const helperDeleteDataById = (state, id) => {
+const deleteDataById = (state, id) => {
     const books = state.filter((book) => book.id !== id)
     return books;
 }
@@ -27,12 +27,12 @@ const reducerAddBooks = (state = initialState.books, action) => {
 
     switch (action.type) {
         case ADD_BOOKS:
-            state = [...state, helperAddData(action)]
+            state = [...state, addData(action)]
             localStorage.setItem('booksData', JSON.stringify(state));
             return state;
 
-        case DELETE_BOOKS:
-            state = helperDeleteDataById(state, action.payload);
+        case DELETE_BOOK:
+            state = deleteDataById(state, action.payload);
             localStorage.setItem('booksData', JSON.stringify(state));
             return state;
 

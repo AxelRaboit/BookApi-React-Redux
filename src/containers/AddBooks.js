@@ -50,7 +50,7 @@ const AddBooks = ({ libraryData, addBook, deleteBook, deleteAll }) => {
             <div className='jumbotron jumbotron-fluid'>
                 <div className='container-fluid text-center bg-light p-3'>
                     <h1 className='display-4'>BOOKS</h1>
-                    <p>Ajouter un libre à votre bibliothèque</p>
+                    <p>Ajouter un livre à votre bibliothèque</p>
 
                     <form className='form-inline d-flex justify-content-center'>
                         <div className='form-group mr-3'>
